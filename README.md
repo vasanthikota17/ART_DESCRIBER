@@ -77,4 +77,11 @@ project-root/
 │   └── (Uploaded image files will be temporarily stored here)
 ├── README.md                 
 └── venv/                      
-![Image to Text and Speech]("C:\Users\VASANTHI\Downloads\Preview .jpg")
+
+
+
+
+
+
+
+Thankyou!!
