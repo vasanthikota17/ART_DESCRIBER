@@ -63,15 +63,15 @@ This folder is used to temporarily store files uploaded by users (e.g., images f
 Here's the structure of the folder and files for project
 project-root/
 │
-├── app.py                     # Main Python file containing your Flask application logic
-├── requirements.txt           # List of all Python dependencies for the project
-├── templates/                 # Folder for HTML templates
-│   └── index.html             # Main HTML template for the app
-├── static/                    # Folder for static files (CSS, JavaScript, audio files, etc.)
-│   ├── README.md              # Placeholder file to ensure the folder is tracked in GitHub
+├── app.py                     
+├── requirements.txt           
+├── templates/                 
+│   └── index.html             
+├── static/                   
+│   ├── README.md              
 │   └── (Generated audio files will be stored here)
-├── uploads/                   # Folder for user-uploaded files
-│   ├── README.md              # Placeholder file to ensure the folder is tracked in GitHub
+├── uploads/                   
+│   ├── README.md
 │   └── (Uploaded image files will be temporarily stored here)
-├── README.md                  # Documentation file for your project
-└── venv/                      # Virtual environment folder (not uploaded to GitHub)
+├── README.md                 
+└── venv/                      
