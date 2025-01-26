@@ -1,8 +1,9 @@
-**Project Description: **
+**Project Description**
+
 Image to Text and Speech Application
 This project focuses on developing a web-based application that seamlessly converts images containing text into both textual and speech outputs. It leverages Optical Character Recognition (OCR) and Text-to-Speech (TTS) technologies to provide a comprehensive solution for extracting and vocalizing textual information from images.
 
-Key Features:**
+**Key Features:**
 **Image Upload:** Users can upload image files containing text.
 **Language Support: **Users can select the desired language for text recognition and speech synthesis.
 **Text Extraction:** Extracts text from the uploaded image using OCR technology.
