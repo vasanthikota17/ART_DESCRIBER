@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Text and Speech</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif; /* Italian-style font */
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg'); /* Suitable background image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px); /* Blur effect on the container */
+        }
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        input[type="file"], select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            font-size: 1em;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        #description {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        audio {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .audio-icon, .image-icon {
+            fill: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image to Text and Speech</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="image" name="file" accept="image/*" required>
+            <select id="language" name="language">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="te">Telugu</option>
+                <option value="ta">Tamil</option>
+            </select>
+            <button type="submit">
+                Upload and Process
+            </button>
+        </form>
+
+        <div id="output">
+            <h3>Description:</h3>
+            <p id="description"></p>
+            <div>
+                <audio id="audio" controls></audio>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon audio-icon">
+                    <path d="M3 10v4h4l5 5V5l-5 5H3z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').onsubmit = async function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append("file", document.getElementById('image').files[0]);
+            formData.append("language", document.getElementById('language').value);
+            
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.error) {
+                alert(result.error);
+            } else {
+                document.getElementById('description').textContent = result.description;
+                const audio = document.getElementById('audio');
+                audio.src = result.audio;
+                audio.style.display = 'block';
+            }
+        };
+    </script>
+</body>
+</html>
